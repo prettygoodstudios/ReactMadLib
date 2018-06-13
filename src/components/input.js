@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
-const Imput = (label) => {
+const Imput = (label,value,change,name) => {
   return(
     <div className="input">
       {label}
+      <input value={value} onChange={change} name={name}/>
     </div>
   );
 }
