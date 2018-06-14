@@ -1,11 +1,27 @@
 import React, {Component} from 'react';
 import Input from './input';
+import Content from './content';
 class Card extends Component {
   constructor(){
     super();
     this.state = {
       color: "",
-      pluralNoun: ""
+      pluralNoun: "",
+      adjective1: "",
+      celeb1: "",
+      adjective2: "",
+      noun1: "",
+      number1: "",
+      number2: "",
+      noun2: "",
+      adjective3: "",
+      celeb2: "",
+      celeb3: "",
+      adjective4: "",
+      noun3: "",
+      celeb4: "",
+      adjective5: "",
+      contentVisible: false
     };
   }
   handleInputChange = (event) => {
@@ -15,14 +31,40 @@ class Card extends Component {
       [target.name]: target.value
     })
   }
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    this.setState({contentVisible: !this.state.contentVisible});
+  }
   render(){
+    const inputData = [
+      {title: 'Color', color: this.state.color, name: 'color'},
+      {title: 'PluralNoun', color: this.state.pluralNoun, name: 'pluralNoun'},
+      {title: 'Adjective 1', color: this.state.adjective1, name: 'adjective1'},
+      {title: 'Celebrity 1', color: this.state.celeb1, name: 'celeb1'},
+
+      {title: 'Adjective 2', color: this.state.adjective2, name: 'adjective2'},
+      {title: 'Noun 1', color: this.state.noun1, name: 'noun1'},
+      {title: 'Number 1', color: this.state.number1, name: 'number1'},
+      {title: 'Number 2', color: this.state.number2, name: 'number2'},
+
+      {title: 'Noun 2', color: this.state.noun2, name: 'noun2'},
+      {title: 'Adjective 3', color: this.state.adjective3, name: 'adjective3'},
+      {title: 'Celebrity 2', color: this.state.celeb2, name: 'celeb2'},
+      {title: 'Celebrity 3', color: this.state.celeb3, name: 'celeb3'},
+
+      {title: 'Adjective 4', color: this.state.adjective4, name: 'adjective4'},
+      {title: 'Noun 3', color: this.state.noun3, name: 'noun3'},
+      {title: 'Celebrity 4', color: this.state.celeb4, name: 'celeb4'},
+      {title: 'Adjective 5', color: this.state.adjective5, name: 'adjective5'}
+    ];
     return(
-      <div className="card">
-        <h1>Color: {this.state.color}</h1>
-        <h1>PluralNoun: {this.state.pluralNoun}</h1>
-        {Input('Color', this.state.color, this.handleInputChange, 'color')}
-        {Input('PluralNoun', this.state.pluralNoun, this.handInputChange, 'pluralNoun')}
-      </div>
+      <form onSubmit={this.handleFormSubmit} className="card">
+        <div className="card-inputs">
+          { inputData.map((data,index) => Input(data,this.handleInputChange,index))}
+        </div>
+        <button type="submit">{!this.state.contentVisible ? 'Generate Madlibs' : 'Clear Madlibs'}</button>
+        { this.state.contentVisible ? <Content data={this.state}/> : <div>Hello!</div>}
+      </form>
     );
   }
 }
