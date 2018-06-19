@@ -9,7 +9,7 @@ class Content extends Component {
       <div>
         <p>
           {Object.values(this.props.data).map((out, index) => {
-            return((index < Object.values(this.props.data).length - 1) ? <span key={index}>Hello world and some more text before this {out}.</span> : <span></span>);
+            return((index < Object.values(this.props.data).length - 1) ? <span key={index}>{` ${index+1}. `}Hello world and some more text before this {out}.</span> : <span key={index}></span>);
           })}
         </p>
       </div>

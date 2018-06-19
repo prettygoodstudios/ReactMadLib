@@ -1,28 +1,29 @@
 import React, {Component} from 'react';
 import Input from './input';
 import Content from './content';
+const InitialState = {
+  color: "",
+  pluralNoun: "",
+  adjective1: "",
+  celeb1: "",
+  adjective2: "",
+  noun1: "",
+  number1: "",
+  number2: "",
+  noun2: "",
+  adjective3: "",
+  celeb2: "",
+  celeb3: "",
+  adjective4: "",
+  noun3: "",
+  celeb4: "",
+  adjective5: "",
+  contentVisible: false
+}
 class Card extends Component {
   constructor(){
     super();
-    this.state = {
-      color: "",
-      pluralNoun: "",
-      adjective1: "",
-      celeb1: "",
-      adjective2: "",
-      noun1: "",
-      number1: "",
-      number2: "",
-      noun2: "",
-      adjective3: "",
-      celeb2: "",
-      celeb3: "",
-      adjective4: "",
-      noun3: "",
-      celeb4: "",
-      adjective5: "",
-      contentVisible: false
-    };
+    this.state = InitialState;
   }
   handleInputChange = (event) => {
     let target = event.target;
@@ -33,7 +34,11 @@ class Card extends Component {
   }
   handleFormSubmit = (event) => {
     event.preventDefault();
-    this.setState({contentVisible: !this.state.contentVisible});
+    if(!this.state.contentVisible){
+      this.setState({contentVisible: true})
+    } else {
+      this.setState(InitialState);
+    }
   }
   render(){
     const inputData = [
@@ -62,7 +67,7 @@ class Card extends Component {
         <div className="card-inputs">
           { inputData.map((data,index) => Input(data,this.handleInputChange,index))}
         </div>
-        <button type="submit">{!this.state.contentVisible ? 'Generate Madlibs' : 'Clear Madlibs'}</button>
+        <button type="submit" className="btn">{!this.state.contentVisible ? 'Generate Madlibs' : 'Clear Madlibs'}</button>
         { this.state.contentVisible ? <Content data={this.state}/> : <div>Hello!</div>}
       </form>
     );
