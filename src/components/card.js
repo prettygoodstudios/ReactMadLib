@@ -68,7 +68,7 @@ class Card extends Component {
           { inputData.map((data,index) => Input(data,this.handleInputChange,index))}
         </div>
         <center><button type="submit" className={`card-${!this.state.contentVisible ? 'generate' : 'clear'}`}>{!this.state.contentVisible ? 'Generate Madlibs' : 'Clear Madlibs'}</button></center>
-        { this.state.contentVisible ? <Content data={this.state}/> : <div>Click the button to generate a mad lib.</div>}
+        { this.state.contentVisible ? <Content data={this.state}/> : <div className="card-content"><p styles={{textAlign: 'center'}}>Click the button to generate a mad lib.</p></div>}
       </form>
     );
   }

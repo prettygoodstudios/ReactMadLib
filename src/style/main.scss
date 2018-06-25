@@ -5,8 +5,8 @@ html,body{
   font-family: 'Avenir';
   overflow-x: hidden;
 }
-@mixin card($height: 736px, $width: 1000px, $background: white){
-  height: $height;
+@mixin card($height: 900px, $width: 1000px, $background: white){
+  /*height: $height;*/
   width: $width;
   background-color: $background;
   box-shadow: 0 4px 30px 0 rgba(0,0,0,0.064);
@@ -121,6 +121,7 @@ clip-path: polygon(0 0, 100% 0, 100% 27%, 0 51%);
     @include button;
     color: white;
     background-color: #00CB79;
+    transform: translateY(50%);
     &:hover{
       background-color: #ECECEC;
       color: #00CB79;
@@ -129,10 +130,23 @@ clip-path: polygon(0 0, 100% 0, 100% 27%, 0 51%);
   .card-clear{
     @include button;
     background-color: red;
+    transform: translateY(50%);
     &:hover{
       background-color: #ECECEC;
       color: red;
     }
+  }
+  .card-content{
+    width: 100%;
+    height: 297px;
+    background-color: #F2F2F2;
+    border-radius: 20px;
+    z-index: -1;
+    p{
+      padding: 50px 47px;
+      margin: 0;
+    }
+    margin-bottom: 84px;
   }
 }
 .header{
