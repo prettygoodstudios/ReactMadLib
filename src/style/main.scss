@@ -47,6 +47,7 @@ input{
   display: grid;
   color: #ECECEC;
   h1{
+
       z-index: 10;
   }
   p{
@@ -94,10 +95,16 @@ clip-path: polygon(0 0, 100% 0, 100% 27%, 0 51%);
   }
 }
 .header{
+  font-family: 'Montserrat';
   h1{
     text-align: center;
+    font-weight: 500;
+    line-height: 44px;
   }
   p{
     text-align: center;
+    color: RGBA(255,255,255,0.6);
+    font-weight: 300;
+    line-height: 19px;
   }
 }
